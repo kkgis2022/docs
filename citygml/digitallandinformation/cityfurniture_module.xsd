@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?><schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:bldg="http://www.opengis.net/citygml/building/3.0" xmlns:core="http://www.opengis.net/citygml/3.0" xmlns:dln="dxlandt.re.kr" xmlns:frn="http://www.opengis.net/citygml/cityfurniture/3.0" xmlns:gml="http://www.opengis.net/gml/3.2" elementFormDefault="qualified" targetNamespace="dxlandt.re.kr" version="1.0">
+  <import namespace="http://www.opengis.net/citygml/3.0" schemaLocation="./core.xsd"/>
+  <import namespace="http://www.opengis.net/citygml/cityfurniture/3.0" schemaLocation="./cityFurniture.xsd"/>
+  <import namespace="http://www.opengis.net/gml/3.2" schemaLocation="http://schemas.opengis.net/gml/3.2.1/gml.xsd"/>
+  <!--XML Schema document created by ShapeChange - http://shapechange.net/-->
+  <element name="CityFurnitureBuildingIDAttribute" substitutionGroup="frn:ADEOfCityFurniture" type="dln:CityFurnitureBuildingIDAttributeType"/>
+  <complexType name="CityFurnitureBuildingIDAttributeType">
+    <complexContent>
+      <extension base="frn:ADEOfCityFurnitureType">
+        <sequence>
+          <element name="cityObjectMemberId" type="string"/>
+          <element minOccurs="0" name="gisBuildingId" type="string"/>
+          <element name="ufid" type="string"/>
+          <element minOccurs="0" name="jusoBuildingId" type="string"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="CityFurnitureBuildingIDAttributePropertyType">
+    <sequence>
+      <element ref="dln:CityFurnitureBuildingIDAttribute"/>
+    </sequence>
+  </complexType>
+  <element name="CityFurnitureMap2dAttribute" substitutionGroup="frn:ADEOfCityFurniture" type="dln:CityFurnitureMap2dAttributeType"/>
+  <complexType name="CityFurnitureMap2dAttributeType">
+    <complexContent>
+      <extension base="frn:ADEOfCityFurnitureType">
+        <sequence>
+          <element name="dtmCode" type="string"/>
+          <element name="dtmName" type="string"/>
+          <element name="dtmObjName" type="string"/>
+          <element name="storeysAboveGround" type="integer"/>
+          <element name="storeysBelowGround" type="integer"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="CityFurnitureMap2dAttributePropertyType">
+    <sequence>
+      <element ref="dln:CityFurnitureMap2dAttribute"/>
+    </sequence>
+  </complexType>
+  <element name="CityFurnitureMap2dGeometryAttribute" substitutionGroup="dln:CityFurnitureMap2dAttribute" type="dln:CityFurnitureMap2dGeometryAttributeType"/>
+  <complexType name="CityFurnitureMap2dGeometryAttributeType">
+    <complexContent>
+      <extension base="dln:CityFurnitureMap2dAttributeType">
+        <sequence>
+          <element name="lod0Geometry" type="gml:GeometryPropertyType"/>
+          <element maxOccurs="unbounded" name="geometryType" type="string"/>
+          <element minOccurs="0" name="mapScale" type="string"/>
+          <element name="creationDate" type="date"/>
+          <element name="updateDate" type="date"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="CityFurnitureMap2dGeometryAttributePropertyType">
+    <sequence>
+      <element ref="dln:CityFurnitureMap2dGeometryAttribute"/>
+    </sequence>
+  </complexType>
+</schema>
