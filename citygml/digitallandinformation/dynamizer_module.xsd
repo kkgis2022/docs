@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?><schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:bldg="http://www.opengis.net/citygml/building/3.0" xmlns:core="http://www.opengis.net/citygml/3.0" xmlns:dln="dxlandt.re.kr" xmlns:frn="http://www.opengis.net/citygml/cityfurniture/3.0" xmlns:gml="http://www.opengis.net/gml/3.2" elementFormDefault="qualified" targetNamespace="dxlandt.re.kr" version="1.0">
+  <import namespace="http://www.opengis.net/citygml/3.0" schemaLocation="./core.xsd"/>
+  <import namespace="http://www.opengis.net/gml/3.2" schemaLocation="http://schemas.opengis.net/gml/3.2.1/gml.xsd"/>
+  <!--XML Schema document created by ShapeChange - http://shapechange.net/-->
+  <element name="ADEOpenDataProperties" substitutionGroup="core:ADEOfAbstractCityObject" type="dln:ADEOpenDataPropertiesType"/>
+  <complexType name="ADEOpenDataPropertiesType">
+    <complexContent>
+      <extension base="core:ADEOfAbstractCityObjectType">
+        <sequence>
+          <element maxOccurs="unbounded" minOccurs="0" name="openData" type="dln:OpenDataPropertyType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="ADEOpenDataPropertiesPropertyType">
+    <sequence>
+      <element ref="dln:ADEOpenDataProperties"/>
+    </sequence>
+  </complexType>
+  <element name="OpenData" substitutionGroup="core:AbstractCityObject" type="dln:OpenDataType"/>
+  <complexType name="OpenDataType">
+    <complexContent>
+      <extension base="core:AbstractCityObjectType">
+        <sequence>
+          <element name="storeyName" type="string"/>
+          <element maxOccurs="unbounded" minOccurs="0" name="visValue" type="dln:VisValueTargetPropertyType"/>
+          <element name="opendataId" type="string"/>
+          <element name="surfaceId" type="string"/>
+          <element name="cityObjectMemberId" type="string"/>
+          <element name="xCoordinate" type="string"/>
+          <element name="yCoordinate" type="string"/>
+          <element minOccurs="0" name="zCoordinate" type="string"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="OpenDataPropertyType">
+    <sequence minOccurs="0">
+      <element ref="dln:OpenData"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="VisValueTarget" substitutionGroup="core:AbstractFeatureWithLifespan" type="dln:VisValueTargetType"/>
+  <complexType name="VisValueTargetType">
+    <complexContent>
+      <extension base="core:AbstractFeatureWithLifespanType">
+        <sequence>
+          <element minOccurs="0" name="dynamizer" type="core:AbstractDynamizerPropertyType"/>
+          <element name="valueName" type="string"/>
+          <element name="valueType" type="dln:VisValueTypeValueType"/>
+          <element minOccurs="0" name="intValue" type="integer"/>
+          <element minOccurs="0" name="doubleValue" type="double"/>
+          <element minOccurs="0" name="stringValue" type="string"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="VisValueTargetPropertyType">
+    <sequence minOccurs="0">
+      <element ref="dln:VisValueTarget"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <simpleType name="VisValueTypeValueType">
+    <restriction base="string">
+      <enumeration value="int"/>
+      <enumeration value="double"/>
+      <enumeration value="string"/>
+    </restriction>
+  </simpleType>
+</schema>
